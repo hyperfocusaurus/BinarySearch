@@ -2,9 +2,6 @@
 #include "gtest/gtest.h"
 #include "binsearch_test.h"
 
-#define NOT_IN_SMALL 64
-#define NOT_IN_BIG 65123
-
 TEST_F(BinarySearchTest, EmptyHaystacks)
 {
 	EXPECT_EQ(-1,int_searcher.search(3,test_array_zerolength,0));
@@ -38,4 +35,25 @@ TEST_F(BinarySearchTest, LargeHaystacksGoodElement)
 	EXPECT_EQ(BIG_SIZE/2,int_searcher.search(BIG_SIZE/2,test_array_big,BIG_SIZE));
 	EXPECT_EQ(BIG_SIZE/2,int_searcher.search(BIG_SIZE/2,test_vector_big));
 	EXPECT_EQ(BIG_SIZE/2,int_searcher.search<BIG_SIZE>(BIG_SIZE/2,test_stdarray_big));
+}
+
+TEST_F(BinarySearchTest, TwoElementsFirstElement)
+{
+	EXPECT_EQ(0,int_searcher.search(FIRST_ELEMENT,test_array_two,2));
+	EXPECT_EQ(0,int_searcher.search(FIRST_ELEMENT,test_vector_two));
+	EXPECT_EQ(0,int_searcher.search<2>(FIRST_ELEMENT,test_stdarray_two));
+}
+
+TEST_F(BinarySearchTest, TwoElementsSecondElement)
+{
+	EXPECT_EQ(1,int_searcher.search(SECOND_ELEMENT,test_array_two,2));
+	EXPECT_EQ(1,int_searcher.search(SECOND_ELEMENT,test_vector_two));
+	EXPECT_EQ(1,int_searcher.search<2>(SECOND_ELEMENT,test_stdarray_two));
+}
+
+TEST_F(BinarySearchTest, TwoElementsFail)
+{
+	EXPECT_EQ(-1,int_searcher.search(NOT_IN_TWO_ELEMENT,test_array_two,2));
+	EXPECT_EQ(-1,int_searcher.search(NOT_IN_TWO_ELEMENT,test_vector_two));
+	EXPECT_EQ(-1,int_searcher.search<2>(NOT_IN_TWO_ELEMENT,test_stdarray_two));
 }

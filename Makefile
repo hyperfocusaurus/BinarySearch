@@ -78,7 +78,7 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-$(OBJ_DIR)/binsearch_test.o: $(MY_TEST_DIR)/binsearch_test.cpp $(SRC_DIR)/include/binsearch.h $(OBJ_DIR) $(GTEST_HEADERS)
+$(OBJ_DIR)/binsearch_test.o: $(MY_TEST_DIR)/binsearch_test.cpp $(MY_TEST_DIR)/binsearch_test.h $(SRC_DIR)/include/binsearch.h $(OBJ_DIR) $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(MY_TEST_DIR)/binsearch_test.cpp -o $@
 
 binsearch_test: $(OBJ_DIR)/binsearch_test.o gtest_main.a
